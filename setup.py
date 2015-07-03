@@ -1,9 +1,11 @@
+import imp
+
 from setuptools import setup
 
 requires = []
 
 try:
-    import argparse
+    imp.find_module('argparse')
 except ImportError:
     requires.append('argparse')
 
@@ -31,18 +33,21 @@ setup(
     packages=['duckduckgo'],
     scripts=['ddg.py'],
 
-    #define requirements and entry points
+    # define requirements and entry points
     install_requires=requires,
     entry_points=entry_points,
 
-    #pypi classifiers
+    # pypi classifiers
     classifiers=[
          'Development Status :: 4 - Beta',
          'Environment :: Console',
          'License :: OSI Approved :: MIT License',
          'Operating System :: OS Independent',
+         'Programming Language :: Python :: 2'
          'Programming Language :: Python :: 2.6',
          'Programming Language :: Python :: 2.7',
+         'Programming Language :: Python :: 3'
+         'Programming Language :: Python :: 3.4',
          'Topic :: Internet :: WWW/HTTP',
          'Topic :: Software Development :: Libraries :: Python Modules',
     ],

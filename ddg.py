@@ -1,10 +1,11 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 """www.duckduckgo.com zero-click api for your command-line"""
 
 import sys
 import webbrowser
 import argparse
-import duckduckgo
+
+from duckduckgo import duckduckgo
 
 
 def main():
@@ -15,8 +16,8 @@ def main():
         description='www.duckduckgo.com zero-click api for your command-line'
     )
     parser.add_argument('query', nargs='*', help='the search query')
-    parser.add_argument('-b', '--bang', action='store_true',
-                        help='open the !bang redirect url in a new browser tab')
+    parser.add_argument('-b', '--bang', action='store_true', help='open the '
+                        '!bang redirect url in a new browser tab')
     parser.add_argument('-d', '--define', action='store_true',
                         help='return the definition result')
     parser.add_argument('-j', '--json', action='store_true',
@@ -79,9 +80,9 @@ def main():
         'Let the user know if no answer was found'
         if failed_to_find_answer:
             if results.type == 'disambiguation':
-                print 'Your query was ambiguous, please be more specific'
+                print('Your query was ambiguous, please be more specific')
             else:
-                print 'No results found'
+                print('No results found')
 
 
 def get_results_priority(args):
@@ -118,14 +119,14 @@ def get_text_or_url(args):
 def print_result(result):
     """Print the result, ascii encode if necessary"""
     try:
-        print result
+        print(result)
     except UnicodeEncodeError:
         if sys.stdout.encoding:
-            print result.encode(sys.stdout.encoding, 'replace')
+            print(result.encode(sys.stdout.encoding, 'replace'))
         else:
-            print result.encode('utf8')
+            print(result.encode('utf8'))
     except:
-        print "Unexpected error attempting to print result"
+        print('Unexpected error attempting to print result')
 
 
 if __name__ == "__main__":
